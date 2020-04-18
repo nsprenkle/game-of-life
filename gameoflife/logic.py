@@ -34,3 +34,12 @@ class Game:
 
         # remove self count of neighbor_x and neighbor_y = x, y
         return neighbors - 1
+
+    def toggle_cell(self, y, x):
+        """ Toggle the value of a cell at a given (y,x) coodinate. Return new value """
+        if self.cells[y][x] == 1:
+            self.cells[y][x] = 0
+            return 0
+        else:
+            self.cells[y][x] = 1
+            return 1
