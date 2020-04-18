@@ -6,7 +6,6 @@ cursor = [0, 0]  # y, x
 # init screen
 screen = curses.initscr()
 curses.start_color()
-curses.curs_set(False)  # Hide the cursor
 max_y, max_x = screen.getmaxyx()
 
 cells = [[0 for x in range(max_x)] for y in range(max_y)]
@@ -49,11 +48,8 @@ def draw():
 
 
 def draw_cursor():
-    """
-    Draw the cursor on the screen
-    Right now, this is an 'x'
-    """
-    screen.addstr(cursor[0], cursor[1], "x", curses.A_BLINK)
+    """ Draw the cursor on the screen """
+    screen.move(cursor[0], cursor[1])
 
 
 # loop
