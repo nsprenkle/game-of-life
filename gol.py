@@ -1,5 +1,6 @@
 """ Conway's Game of Life """
 import curses
+from gameoflife.logic import Game
 
 cursor = [0, 0]  # y, x
 
@@ -8,7 +9,8 @@ screen = curses.initscr()
 curses.start_color()
 max_y, max_x = screen.getmaxyx()
 
-cells = [[0 for x in range(max_x)] for y in range(max_y)]
+# Init game
+game = Game(max_y, max_x)
 
 
 def handle_keypress(keycode):
@@ -23,7 +25,7 @@ def handle_keypress(keycode):
     elif keycode == 68:  # left
         cursor[1] -= 1
     elif keycode == 120:  # x
-        cells[cursor[0]][cursor[1]] = 0 if cells[cursor[0]][cursor[1]] == 1 else 1
+        game.toggle_cell(cursor[0], cursor[1])
 
 
 def clip_cursor_to_window():
@@ -43,7 +45,7 @@ def clip_cursor_to_window():
 def draw():
     for y in range(0, max_y):
         for x in range(0, max_x):
-            if cells[y][x] == 1:
+            if game.cells[y][x] == 1:
                 screen.addch(y, x, "a")
 
 
@@ -53,7 +55,7 @@ def draw_cursor():
 
 
 # loop
-def game():
+def run_game_loop():
 
     # Handle keypress
     c = screen.getch()
@@ -68,7 +70,7 @@ def game():
     return True
 
 
-while game():
+while run_game_loop():
     pass
 
 curses.endwin()

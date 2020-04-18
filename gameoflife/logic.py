@@ -2,6 +2,7 @@ class Game:
     """ Containing class for cells in the Game of Life simulation """
 
     def __init__(self, y_max, x_max):
+        """ Create a board with given y/x dimensions """
         self.y_max = y_max
         self.x_max = x_max
         self.cells = [[0 for x in range(x_max)] for y in range(y_max)]
