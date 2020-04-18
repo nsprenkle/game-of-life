@@ -40,8 +40,9 @@ def test_calculate_next_board():
 
     # When I calculate the next board state
     # Then the rules of life are followed
-    next_board = game.calculate_next_board()
-    board_1 = [
+    game.update_board()
+
+    assert game.cells == [
         [0, 0, 0, 0, 0],
         [1, 0, 1, 0, 0],
         [0, 1, 1, 0, 0],
@@ -49,4 +50,12 @@ def test_calculate_next_board():
         [0, 0, 0, 0, 0],
     ]
 
-    assert next_board == board_1
+    game.update_board()
+
+    assert game.cells == [
+        [0, 0, 0, 0, 0],
+        [0, 0, 1, 0, 0],
+        [1, 0, 1, 0, 0],
+        [0, 1, 1, 0, 0],
+        [0, 0, 0, 0, 0],
+    ]

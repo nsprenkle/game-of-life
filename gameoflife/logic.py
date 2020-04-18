@@ -67,11 +67,12 @@ class Game:
             for x in range(self.x_max):
                 neighbor_count = neighbor_counts[y][x]
 
-                # Cell lives
-                if neighbor_count in (2, 3):
+                # Populated cell
+                if self.cells[y][x] == 1 and neighbor_count in (2, 3):
                     next_board[y][x] = 1
-
-                # Cell dies
+                # Unpopulated cell
+                elif self.cells[y][x] == 0 and neighbor_count == 3:
+                    next_board[y][x] = 1
                 else:
                     next_board[y][x] = 0
 
