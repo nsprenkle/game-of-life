@@ -39,6 +39,10 @@ class Game:
 
         return neighbors
 
+    def update_board(self):
+        """ Update the board to the next state """
+        self.cells = self.calculate_next_board()
+
     def calculate_next_board(self):
         """
         Calculate the next board state based on the rules:
