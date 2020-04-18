@@ -36,6 +36,40 @@ class Game:
         # remove self count of neighbor_x and neighbor_y = x, y
         return neighbors - 1
 
+    def calculate_next_board(self):
+        """
+        Calculate the next board state based on the rules:
+
+        For a space that is 'populated':
+            Each cell with one or no neighbors dies, as if by solitude. 
+            Each cell with four or more neighbors dies, as if by overpopulation. 
+            Each cell with two or three neighbors survives. 
+        For a space that is 'empty' or 'unpopulated'
+            Each cell with three neighbors becomes populated. 
+        """
+        # Calculate neighbors for each cell
+        neighbor_counts = [
+            [self.num_of_neighbors(y, x) for x in range(self.x_max)]
+            for y in range(self.y_max)
+        ]
+
+        # Generate next board
+        next_board = [[0 for x in range(self.x_max)] for y in range(self.y_max)]
+
+        for y in range(self.y_max):
+            for x in range(self.x_max):
+                neighbor_count = neighbor_counts[y][x]
+
+                # Cell lives
+                if neighbor_count in (2, 3):
+                    next_board[y][x] = 1
+
+                # Cell dies
+                else:
+                    next_board[y][x] = 0
+
+        return next_board
+
     def toggle_cell(self, y, x):
         """ Toggle the value of a cell at a given (y,x) coodinate. Return new value """
         if self.cells[y][x] == 1:
