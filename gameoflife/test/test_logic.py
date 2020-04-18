@@ -19,8 +19,8 @@ def test_num_of_neighbors():
     assert game.num_of_neighbors(0, 4) == 1
     assert game.num_of_neighbors(0, 3) == 2
     assert game.num_of_neighbors(2, 0) == 3
-    assert game.num_of_neighbors(2, 3) == 4
-    assert game.num_of_neighbors(4, 2) == 5
+    assert game.num_of_neighbors(1, 2) == 4
+    assert game.num_of_neighbors(2, 3) == 5
     assert game.num_of_neighbors(3, 3) == 6
     assert game.num_of_neighbors(3, 2) == 7
     assert game.num_of_neighbors(3, 1) == 8

@@ -34,7 +34,10 @@ class Game:
                     neighbors += 1
 
         # remove self count of neighbor_x and neighbor_y = x, y
-        return neighbors - 1
+        if self.cells[y][x] == 1:
+            neighbors -= 1
+
+        return neighbors
 
     def calculate_next_board(self):
         """
