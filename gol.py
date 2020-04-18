@@ -25,8 +25,10 @@ def handle_keypress(keycode):
         cursor[1] += 1
     elif keycode == 68:  # left
         cursor[1] -= 1
-    elif keycode == 120:  # x
+    elif keycode == 120:  # x - toggle
         game.toggle_cell(cursor[0], cursor[1])
+    elif keycode == 110:  # n - next
+        game.update_board()
 
 
 def clip_cursor_to_window():
