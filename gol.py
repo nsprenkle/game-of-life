@@ -2,6 +2,7 @@
 import curses
 from gameoflife.logic import Game
 
+CELL_ON_CHAR = "X"
 cursor = [0, 0]  # y, x
 
 # init screen
@@ -46,7 +47,7 @@ def draw():
     for y in range(0, max_y):
         for x in range(0, max_x):
             if game.cells[y][x] == 1:
-                screen.addch(y, x, "a")
+                screen.addch(y, x, CELL_ON_CHAR)
 
 
 def draw_cursor():
