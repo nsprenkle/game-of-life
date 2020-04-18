@@ -25,3 +25,12 @@ Files are formatted with [Black](https://pypi.org/project/black/)
 ```bash
 black .
 ```
+
+## Test
+
+Files are tested with Pytest
+
+```bash
+pip install -e .
+pytest
+```
