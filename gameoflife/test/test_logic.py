@@ -42,6 +42,7 @@ def test_calculate_next_board():
     # Then the rules of life are followed
     game.update_board()
 
+    assert game.iteration == 1
     assert game.cells == [
         [0, 0, 0, 0, 0],
         [1, 0, 1, 0, 0],
@@ -52,6 +53,7 @@ def test_calculate_next_board():
 
     game.update_board()
 
+    assert game.iteration == 2
     assert game.cells == [
         [0, 0, 0, 0, 0],
         [0, 0, 1, 0, 0],

@@ -6,6 +6,7 @@ class Game:
         self.y_max = y_max
         self.x_max = x_max
         self.cells = [[0 for x in range(x_max)] for y in range(y_max)]
+        self.iteration = 0
 
     def num_of_neighbors(self, y, x):
         """ Calculate the number of neighbors of a cell """
@@ -42,6 +43,7 @@ class Game:
     def update_board(self):
         """ Update the board to the next state """
         self.cells = self.calculate_next_board()
+        self.iteration += 1
 
     def calculate_next_board(self):
         """
